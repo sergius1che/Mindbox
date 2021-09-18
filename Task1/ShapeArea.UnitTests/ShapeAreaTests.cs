@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using ShapeArea.Shapes;
 
@@ -38,6 +39,18 @@ namespace ShapeArea.UnitTests
             var area = Shape2DArea.Instance.Calc(triangle);
 
             Assert.AreEqual(expect, area, Consts.EQUAL_DELTA);
+        }
+
+        [Test]
+        public void Calc_UnknownShape_ThrowsException()
+        {
+            var shape = new UnknownShape();
+
+            _ = Assert.Throws<NotSupportedException>(() => Shape2DArea.Instance.Calc(shape));
+        }
+
+        public class UnknownShape : IShape2D
+        {
         }
     }
 }

@@ -53,7 +53,7 @@ namespace ShapeArea
                 return ((IAreaResolver<TShape2D>)resolver).Calc(shape);
             }
 
-            throw new NotSupportedException($"Shape type of '{shape.GetType()}' is not supported");
+            throw new NotSupportedException($"Shape type of '{shape.GetType().FullName}' is not supported");
         }
     }
 }
